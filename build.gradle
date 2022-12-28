@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'org.testng', name: 'testng', version: '7.5'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.7.0'
+    testImplementation 'io.appium:java-client:8.3.0'
+}
+
+test {
+    testLogging.showStandardStreams = true
+    useTestNG(){
+        useDefaultListeners = true
+    }
+}
