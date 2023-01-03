@@ -1,4 +1,4 @@
-package framework;
+package framework.core;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
