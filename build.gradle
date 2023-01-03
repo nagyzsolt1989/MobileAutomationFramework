@@ -8,9 +8,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation group: 'org.testng', name: 'testng', version: '7.5'
-    testImplementation 'org.seleniumhq.selenium:selenium-java:4.7.0'
-    testImplementation 'io.appium:java-client:8.3.0'
+    implementation group: 'org.testng', name: 'testng', version: '7.7.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.7.1'
+    implementation 'io.appium:java-client:8.3.0'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
 test {
