@@ -4,7 +4,8 @@
     "platformVersion": "12.0",
     "automationName": "UIAutomator2",
     "deviceName": "Pixel 6",
-    "app": "Absolute path to the apk file"
+    "app": "Absolute path to the apk file",
+    "appWaitActivity": "com.reddit.auth.screen.welcome.IntroductionActivity"
   },
   {
     "platformName": "iOS",

@@ -5,6 +5,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,9 +15,10 @@ import java.io.IOException;
 
 public class BaseTest{
     private static ThreadLocal<AppiumDriver> threadLocalDriver = new ThreadLocal<>();
+    private static final Logger LOGGER = LogManager.getLogger(BaseTest.class);
 
-    public static ThreadLocal<AppiumDriver> getDriver() {
-        return threadLocalDriver;
+    public static AppiumDriver getDriver() {
+        return threadLocalDriver.get();
     }
 
     public static void setDriver(AppiumDriver driver) {
@@ -31,14 +34,12 @@ public class BaseTest{
             switch (platform){
                 case "android":
                     jsonObject = (JSONObject) jsonArray.get(0);
-                    System.out.println("android was selected");
                     break;
                 case "ios":
                     jsonObject = (JSONObject) jsonArray.get(1);
-                    System.out.println("ios was selected");
                     break;
                 default:
-                    System.out.println("Please select android or ios for the platform");
+                    LOGGER.info("Please select android or ios for the platform");
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
