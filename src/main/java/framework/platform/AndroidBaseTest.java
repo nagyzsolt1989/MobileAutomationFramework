@@ -4,9 +4,10 @@ import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.android.AndroidDriver;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
 import java.net.MalformedURLException;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import org.json.simple.JSONObject;
 import framework.core.BaseTest;
@@ -18,7 +19,7 @@ public class AndroidBaseTest extends BaseTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AndroidBaseTest.class);
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() throws MalformedURLException {
         JSONObject androidConfig = getConfigJSON("android");
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -32,13 +33,13 @@ public class AndroidBaseTest extends BaseTest {
 
         AndroidDriver driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         BaseTest.setDriver(driver);
 
-        LOGGER.info("Appium driver initialised");
+        LOGGER.info("Android driver initialised");
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         BaseTest.getDriver().quit();
         LOGGER.info("Appium session ended");

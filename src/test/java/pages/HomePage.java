@@ -41,4 +41,9 @@ public class HomePage extends BasePage {
     public boolean is9GagLabelDisplayed() {
         return isDisplayed(label9gag);
     }
+
+    public void clickOnProfileButton() {
+        clickOnElement(buttonProfile);
+        LOGGER.info("Home Page - Profile button clicked");
+    }
 }
