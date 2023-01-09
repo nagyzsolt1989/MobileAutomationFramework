@@ -1,23 +1,28 @@
 package tests.android;
 
-import framework.core.BaseTest;
 import framework.platform.AndroidBaseTest;
 import io.appium.java_client.AppiumDriver;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import framework.core.BaseTest;
+import pages.PrivacyPage;
+import org.testng.Assert;
 import pages.HomePage;
-import pages.IntroPage;
 
 public class LoginTests extends AndroidBaseTest {
 
     @Test
-    public void verifyHomePage() {
+    public void skipLogin() {
         AppiumDriver driver = BaseTest.getDriver();
 
-        IntroPage introPage = new IntroPage(driver);
+        PrivacyPage privacyPage = new PrivacyPage(driver);
         HomePage homePage = new HomePage(driver);
 
-        introPage.clickOnSkipButton();
+        privacyPage.acceptAllCookies();
+
+        Assert.assertTrue(homePage.isMenuButtonDisplayed(), "Menu button was not visible");
         Assert.assertTrue(homePage.isSearchButtonDisplayed(), "Search button was not visible");
+        Assert.assertTrue(homePage.isNotificationsButtonDisplayed(), "Notifications button was not visible");
+        Assert.assertTrue(homePage.isProfileButtonDisplayed(), "Profile button was not visible");
+        Assert.assertTrue(homePage.is9GagLabelDisplayed(), "9Gag label was not visible");
     }
 }

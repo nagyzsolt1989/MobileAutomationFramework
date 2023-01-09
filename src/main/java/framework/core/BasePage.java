@@ -1,33 +1,32 @@
 package framework.core;
 
-import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.support.PageFactory;
+import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebElement;
+import org.slf4j.LoggerFactory;
+import org.openqa.selenium.By;
 import java.time.Duration;
+import org.slf4j.Logger;
 
 public class BasePage {
 
-    private static final Logger LOGGER = LogManager.getLogger(BasePage.class);
-    private static final int TIMEOUT = 3;
+    protected static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);
+    private static final int TIMEOUT = 20;
 
-    protected AppiumDriver driver;
+    private AppiumDriver driver;
     private WebDriverWait wait;
 
     public BasePage(AppiumDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    protected void waitForElementToAppear(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    protected void waitForElementToAppear(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     protected void waitForElementToDisappear(By locator) {
@@ -35,12 +34,7 @@ public class BasePage {
     }
 
     protected void clickOnElement(WebElement element) {
-        try {
-            element.click();
-            LOGGER.info("{} clicked", element.getText());
-        } catch (NoSuchElementException e) {
-            LOGGER.error("Element was not visible in {} seconds", TIMEOUT);
-        }
+        wait.until(ExpectedConditions.visibilityOf(element)).click();
     }
 
     protected boolean isDisplayed(WebElement element) {

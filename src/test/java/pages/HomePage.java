@@ -1,32 +1,44 @@
 package pages;
 
-import framework.core.BasePage;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.pagefactory.AndroidBy;
 import org.openqa.selenium.WebElement;
+import framework.core.BasePage;
 
 public class HomePage extends BasePage {
 
-    @AndroidBy(accessibility="Communities")
-    WebElement buttonCommunities;
-    @AndroidBy(accessibility="Search")
-    WebElement buttonSearch;
-    @AndroidBy(accessibility="Reddit Recap")
-    WebElement buttonRecap;
+    @AndroidFindBy(id = "drawer_handle")
+    private WebElement buttonMenu;
+    @AndroidFindBy(id = "actionSearch")
+    private WebElement buttonSearch;
+    @AndroidFindBy(id = "actionNotifications")
+    private WebElement buttonNotifications;
+    @AndroidFindBy(id = "avatarImage")
+    private WebElement buttonProfile;
+    @AndroidFindBy(id = "watermark")
+    private WebElement label9gag;
 
     public HomePage(AppiumDriver driver) {
         super(driver);
     }
 
-    public boolean isCommunitiesButtonDisplayed(){
-        return isDisplayed(buttonCommunities);
+    public boolean isMenuButtonDisplayed() {
+        return isDisplayed(buttonMenu);
     }
 
-    public boolean isSearchButtonDisplayed(){
+    public boolean isSearchButtonDisplayed() {
         return isDisplayed(buttonSearch);
     }
 
-    public boolean isRecapButtonDisplayed(){
-        return isDisplayed(buttonRecap);
+    public boolean isNotificationsButtonDisplayed() {
+        return isDisplayed(buttonNotifications);
+    }
+
+    public boolean isProfileButtonDisplayed() {
+        return isDisplayed(buttonProfile);
+    }
+
+    public boolean is9GagLabelDisplayed() {
+        return isDisplayed(label9gag);
     }
 }

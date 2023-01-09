@@ -5,7 +5,7 @@
     "automationName": "UIAutomator2",
     "deviceName": "Pixel 6",
     "app": "Absolute path to the apk file",
-    "appWaitActivity": "com.reddit.auth.screen.welcome.IntroductionActivity"
+    "appWaitActivity": "com.ninegag.android.app.ui.home.HomeActivity"
   },
   {
     "platformName": "iOS",

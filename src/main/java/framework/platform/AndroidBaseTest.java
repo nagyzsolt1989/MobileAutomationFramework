@@ -1,22 +1,22 @@
 package framework.platform;
 
-import framework.core.BaseTest;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.json.simple.JSONObject;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
+import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
+import org.json.simple.JSONObject;
+import framework.core.BaseTest;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import java.net.URL;
-import java.time.Duration;
 
 public class AndroidBaseTest extends BaseTest {
 
-    private static final Logger LOGGER = LogManager.getLogger(AndroidBaseTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AndroidBaseTest.class);
 
     @BeforeTest
     public void setUp() throws MalformedURLException {
@@ -32,7 +32,7 @@ public class AndroidBaseTest extends BaseTest {
 
         AndroidDriver driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         BaseTest.setDriver(driver);
 
         LOGGER.info("Appium driver initialised");

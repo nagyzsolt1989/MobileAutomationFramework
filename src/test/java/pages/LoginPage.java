@@ -1,4 +1,4 @@
-package resources.pages;
+package pages;
 
 import framework.core.BasePage;
 import io.appium.java_client.AppiumDriver;

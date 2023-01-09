@@ -1,21 +1,19 @@
 package framework.core;
 
-import io.appium.java_client.AppiumDriver;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import io.appium.java_client.AppiumDriver;
+import org.json.simple.parser.JSONParser;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
-
+import java.io.FileReader;
+import org.slf4j.Logger;
 
 public class BaseTest{
     private static ThreadLocal<AppiumDriver> threadLocalDriver = new ThreadLocal<>();
-    private static final Logger LOGGER = LogManager.getLogger(BaseTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BaseTest.class);
 
     public static AppiumDriver getDriver() {
         return threadLocalDriver.get();
