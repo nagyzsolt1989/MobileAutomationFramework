@@ -1,9 +1,10 @@
 package pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import framework.core.BasePage;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class HomePage extends BasePage {
 
@@ -18,7 +19,7 @@ public class HomePage extends BasePage {
     @AndroidFindBy(id = "watermark")
     private WebElement label9gag;
 
-    public HomePage(AppiumDriver driver) {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 

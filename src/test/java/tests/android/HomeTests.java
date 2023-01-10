@@ -2,7 +2,13 @@ package tests.android;
 
 import framework.platform.AndroidBaseTest;
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Description;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.Test;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Epic;
@@ -11,6 +17,8 @@ import pages.PrivacyPage;
 import org.testng.Assert;
 import pages.HomePage;
 
+import java.io.ByteArrayInputStream;
+
 @Epic("Home")
 @Feature("Layout")
 public class HomeTests extends AndroidBaseTest {
@@ -18,11 +26,12 @@ public class HomeTests extends AndroidBaseTest {
     @Test
     @Description("Verify the layout of the Home page")
     public void verifyHomePage() {
-        AppiumDriver driver = BaseTest.getDriver();
+        WebDriver driver = BaseTest.getDriver();
 
         PrivacyPage privacyPage = new PrivacyPage(driver);
         HomePage homePage = new HomePage(driver);
 
+        Allure.addAttachment("test", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         privacyPage.acceptAllCookies();
 
         Assert.assertTrue(homePage.isMenuButtonDisplayed(), "Menu button was not visible");

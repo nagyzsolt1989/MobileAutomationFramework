@@ -2,8 +2,10 @@ package pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import framework.core.BasePage;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class ProfilePage extends BasePage {
 
@@ -18,7 +20,7 @@ public class ProfilePage extends BasePage {
     @AndroidFindBy(xpath = "xpath = //android.widget.TextView[@text='Dark mode']")
     private WebElement buttonDarkMode;
 
-    public ProfilePage(AppiumDriver driver) {
+    public ProfilePage(WebDriver driver) {
         super(driver);
     }
 

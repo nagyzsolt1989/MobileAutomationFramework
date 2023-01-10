@@ -3,6 +3,8 @@ package tests.android;
 import framework.platform.AndroidBaseTest;
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Description;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.Test;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Epic;
@@ -21,7 +23,7 @@ public class LoginTests extends AndroidBaseTest {
     @Test
     @Description("Verify the layout of the Log In page")
     public void verifyLogInPage() {
-        AppiumDriver driver = BaseTest.getDriver();
+        WebDriver driver = BaseTest.getDriver();
 
         ProfilePage profilePage = new ProfilePage(driver);
         PrivacyPage privacyPage = new PrivacyPage(driver);
@@ -41,7 +43,7 @@ public class LoginTests extends AndroidBaseTest {
     @Test
     @Description("Verify the layout of the Forgot Password page")
     public void verifyForgotPasswordPage() {
-        AppiumDriver driver = BaseTest.getDriver();
+        WebDriver driver = BaseTest.getDriver();
 
         ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(driver);
         PrivacyPage privacyPage = new PrivacyPage(driver);

@@ -1,10 +1,11 @@
 package framework.core;
 
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.AppiumElementLocatorFactory;
+import io.appium.java_client.pagefactory.DefaultElementByBuilder;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.PageFactory;
-import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 import org.openqa.selenium.By;
@@ -16,13 +17,14 @@ public class BasePage {
     protected static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);
     private static final int TIMEOUT = 20;
 
-    private AppiumDriver driver;
+    private WebDriver driver;
     private WebDriverWait wait;
 
-    public BasePage(AppiumDriver driver) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        PageFactory.initElements(new AppiumElementLocatorFactory(driver, Duration.ofSeconds(1),
+                new DefaultElementByBuilder(BaseTest.mobilePlatform, BaseTest.automationName)), this);
     }
 
     protected void waitForElementToAppear(WebElement element) {

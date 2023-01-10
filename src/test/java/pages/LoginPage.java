@@ -2,8 +2,10 @@ package pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import framework.core.BasePage;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class LoginPage extends BasePage {
 
@@ -26,7 +28,7 @@ public class LoginPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Forgot password?']")
     private WebElement buttonForgotPassword;
 
-    public LoginPage(AppiumDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 

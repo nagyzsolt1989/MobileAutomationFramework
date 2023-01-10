@@ -1,8 +1,8 @@
 package pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.AppiumDriver;
 import framework.core.BasePage;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class PrivacyPage extends BasePage {
@@ -14,7 +14,7 @@ public class PrivacyPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Confirm My Choices']")
     WebElement buttonConfirmMyChoices;
 
-    public PrivacyPage(AppiumDriver driver) {
+    public PrivacyPage(WebDriver driver) {
         super(driver);
     }
 
