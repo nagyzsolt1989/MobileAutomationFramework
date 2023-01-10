@@ -2,7 +2,10 @@ package tests.android;
 
 import framework.platform.AndroidBaseTest;
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Epic;
 import pages.ForgotPasswordPage;
 import framework.core.BaseTest;
 import pages.PrivacyPage;
@@ -11,9 +14,12 @@ import org.testng.Assert;
 import pages.LoginPage;
 import pages.HomePage;
 
+@Epic("Log In")
+@Feature("Layout")
 public class LoginTests extends AndroidBaseTest {
 
     @Test
+    @Description("Verify the layout of the Log In page")
     public void verifyLogInPage() {
         AppiumDriver driver = BaseTest.getDriver();
 
@@ -33,6 +39,7 @@ public class LoginTests extends AndroidBaseTest {
     }
 
     @Test
+    @Description("Verify the layout of the Forgot Password page")
     public void verifyForgotPasswordPage() {
         AppiumDriver driver = BaseTest.getDriver();
 
