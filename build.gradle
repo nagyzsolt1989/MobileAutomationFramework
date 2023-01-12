@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'io.qameta.allure' version "2.11.2"
 }
+
 sourceCompatibility = 1.8
 
 repositories {
@@ -10,6 +10,7 @@ repositories {
 
 dependencies {
     implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: '2.19.0'
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.20.1'
     implementation group: 'org.testng', name: 'testng', version: '7.4.0'
     implementation 'com.codepine.api:testrail-api-java-client:2.0.2'
     implementation 'org.seleniumhq.selenium:selenium-java:4.7.1'
@@ -21,15 +22,6 @@ dependencies {
 
 test {
     testLogging.showStandardStreams = true
-    useTestNG(){
-    }
-}
-
-allure {
-    report {
-        version.set("2.14.0")
-    }
-    adapter {
-        allureJavaVersion.set("2.14.0")
+    useTestNG() {
     }
 }

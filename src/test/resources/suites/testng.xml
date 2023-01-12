@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Android test suite">
+    <listeners>
+        <listener class-name="utils.listeners.AnnotationTransformer"/>
+    </listeners>
+    <test name="Android ">
+        <groups>
+            <run>
+                <exclude name="broken"  />
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.android.HomeTests"/>
+            <class name="tests.android.LoginTests"/>
+        </classes>
+    </test>
+</suite>
