@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import java.net.MalformedURLException;
 import org.openqa.selenium.WebDriver;
-import util.listeners.EventListener;
+import utils.listeners.EventListener;
 import org.json.simple.JSONObject;
 import framework.core.BaseTest;
 import org.slf4j.LoggerFactory;

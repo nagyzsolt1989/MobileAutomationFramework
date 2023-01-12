@@ -1,10 +1,8 @@
 package tests.android;
 
 import framework.platform.AndroidBaseTest;
-import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.Test;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Epic;
@@ -15,12 +13,14 @@ import pages.ProfilePage;
 import org.testng.Assert;
 import pages.LoginPage;
 import pages.HomePage;
+import utils.testrail.TestRailID;
 
 @Epic("Log In")
 @Feature("Layout")
 public class LoginTests extends AndroidBaseTest {
 
     @Test
+    @TestRailID("C1")
     @Description("Verify the layout of the Log In page")
     public void verifyLogInPage() {
         WebDriver driver = BaseTest.getDriver();
@@ -41,6 +41,7 @@ public class LoginTests extends AndroidBaseTest {
     }
 
     @Test
+    @TestRailID("C2")
     @Description("Verify the layout of the Forgot Password page")
     public void verifyForgotPasswordPage() {
         WebDriver driver = BaseTest.getDriver();

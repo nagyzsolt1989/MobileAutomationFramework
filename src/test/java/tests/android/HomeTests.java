@@ -1,14 +1,11 @@
 package tests.android;
 
 import framework.platform.AndroidBaseTest;
-import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Description;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.Test;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Epic;
@@ -16,6 +13,7 @@ import framework.core.BaseTest;
 import pages.PrivacyPage;
 import org.testng.Assert;
 import pages.HomePage;
+import utils.testrail.TestRailID;
 
 import java.io.ByteArrayInputStream;
 
@@ -24,6 +22,7 @@ import java.io.ByteArrayInputStream;
 public class HomeTests extends AndroidBaseTest {
 
     @Test
+    @TestRailID("C3")
     @Description("Verify the layout of the Home page")
     public void verifyHomePage() {
         WebDriver driver = BaseTest.getDriver();

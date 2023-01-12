@@ -2,16 +2,20 @@ package framework.core;
 
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.openqa.selenium.WebDriver;
 import java.io.FileNotFoundException;
-import util.listeners.TestListener;
+
+import utils.PropertyReader;
+import utils.listeners.TestListener;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.FileReader;
 import org.slf4j.Logger;
+import utils.testrail.TestRailUtil;
 
 @Listeners(TestListener.class)
 public class BaseTest{
@@ -55,6 +59,14 @@ public class BaseTest{
             e.printStackTrace();
         } finally {
             return jsonObject;
+        }
+    }
+
+    @BeforeSuite
+    public void createTestRailRun() {
+        PropertyReader testrail = new PropertyReader("testrail.properties");
+        if (Boolean.valueOf(testrail.getProperty("testrail.enabled"))){
+            TestRailUtil.addTestRun();
         }
     }
 }
