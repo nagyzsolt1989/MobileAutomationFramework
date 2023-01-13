@@ -2,7 +2,7 @@
 
 ![Logo width="200" height="400"](images/logo.png)
 
-# Mobile Automation Framework
+# Java Mobile Automation Framework
 
 [//]: # (![Badge]&#40;https://img.shields.io/badge/badge-badge-brightgreen&#41;)
 
@@ -56,9 +56,9 @@ An end to end java mobile test framework utilizing the latest tech available in 
 application is represented with a class that contains the elements for that page with the methods 
 for interacting with these elements. When the UI of the app changes the tests themselves don’t need to change,
 only the page object class should be updated. The advantages of POM:
-- Easier code maintainance
+- Easier code maintenance
 - Code reusability
-- Imporved readability and Reliability
+- Improved readability and reliability
 
 [Page Factory:](https://www.testim.io/blog/page-factory-in-selenium/) Provides @FindBy annotation to locate and declare elements using different locator strategies. 
 It uses a lazy load initElements() static method to initialize the elements only when they are used in an operation 
@@ -68,7 +68,7 @@ or activity.
 
 - EventListener: A WebDriverListener for Appium related events
 - TestListener: An ITestListener listener for TestNG related events
-- AnnotationTransformer: For retrying failed test cases up to 4 times
+- AnnotationTransformer: For retrying failed test cases up to 3 times
 
 ## :heavy_check_mark: Dependencies and libs
 
