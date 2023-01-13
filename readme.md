@@ -78,14 +78,12 @@ or activity.
 - [Allure](https://docs.qameta.io/allure/)
 - [Log4j2](https://logging.apache.org/log4j/2.x/)
 - [codepine/testrail-api-java-client](https://github.com/codepine/testrail-api-java-client)
-- [JSON.simple](https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple)
 
 ## :open_file_folder: Directory Tree
 
 ```
 MobileAutomationFramework
 ├── src
-│   ├── device-config.json
 │   ├── main
 │   │   ├── java
 │   │   │   ├── framework
@@ -105,6 +103,8 @@ MobileAutomationFramework
 │   │   │           ├── TestRailID.java
 │   │   │           └── TestRailUtil.java
 │   │   └── resources
+│   │       ├── android.properties
+│   │       ├── ios.properties
 │   │       ├── log4j2.properties
 │   │       └── testrail.properties
 │   └── test
