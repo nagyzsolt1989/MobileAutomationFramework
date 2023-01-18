@@ -14,6 +14,8 @@ public class BaseTest{
 
     public static String mobilePlatform;
     public static String automationName;
+    public static String deviceName;
+    public static String platformVersion;
 
     public static WebDriver getDriver() {
         return threadLocalDriver.get();
@@ -22,6 +24,23 @@ public class BaseTest{
     public static void setDriver(WebDriver driver) {
         threadLocalDriver.set(driver);
     }
+
+    public static void setPlatform(String platform) {
+        mobilePlatform = platform;
+    }
+
+    public static void setAutomationName(String automation) {
+        automationName = automation;
+    }
+
+    public static void setDeviceName(String device) {
+        deviceName = device;
+    }
+
+    public static void setPlatformVersion(String version) {
+        platformVersion = version;
+    }
+
 
     @BeforeSuite
     public void createTestRailRun() {

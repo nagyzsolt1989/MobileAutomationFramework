@@ -32,6 +32,11 @@ public class AndroidBaseTest extends BaseTest {
     public void setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
+        BaseTest.setPlatformVersion(config.getProperty("platformVersion"));
+        BaseTest.setAutomationName(config.getProperty("automationName"));
+        BaseTest.setPlatform(config.getProperty("platformName"));
+        BaseTest.setDeviceName(config.getProperty("deviceName"));
+
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, config.getProperty("platformName"));
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, config.getProperty("platformVersion"));
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, config.getProperty("automationName"));
