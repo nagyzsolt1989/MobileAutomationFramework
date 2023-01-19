@@ -41,10 +41,12 @@ public class AndroidBaseTest extends BaseTest {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, config.getProperty("platformVersion"));
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, config.getProperty("automationName"));
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, config.getProperty("deviceName"));
-        capabilities.setCapability(MobileCapabilityType.APP, config.getProperty("app"));
         capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_ACTIVITY, config.getProperty("appWaitActivity"));
+        capabilities.setCapability(MobileCapabilityType.APP,
+                System.getProperty("user.dir") + config.getProperty("app"));
 
-        AndroidDriver driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
+
+        AndroidDriver driver = new AndroidDriver(new URL("http://localhost:4723"), capabilities);
 
         WebDriverListener eventListener = new EventListener();
         WebDriver decoratedAppiumDriver = new EventFiringDecorator(eventListener).decorate(driver);

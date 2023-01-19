@@ -50,4 +50,12 @@ public class BasePage {
     protected boolean isSelected(WebElement element) {
         return element.isSelected();
     }
+
+    protected void sendKeys(WebElement element, String keys) {
+        wait.until(ExpectedConditions.visibilityOf(element)).sendKeys(keys);
+    }
+
+    public String getLocatorFromWebElement(WebElement element) {
+        return element.toString().split("->")[1].replaceFirst("(?s)(.*)\\]", "$1" + "");
+    }
 }
