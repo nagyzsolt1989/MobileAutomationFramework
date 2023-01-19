@@ -75,8 +75,8 @@ or activity.
 ## :heavy_check_mark: Dependencies and libs
 
 - [TestNG](https://testng.org/doc/documentation-main.html)
-- [Appium](https://github.com/appium/appium)
-- [Selenium](https://github.com/SeleniumHQ/selenium)
+- [Appium2](https://github.com/appium/appium)
+- [Selenium4](https://github.com/SeleniumHQ/selenium)
 - [Allure](https://docs.qameta.io/allure/)
 - [Log4j2](https://logging.apache.org/log4j/2.x/)
 - [codepine/testrail-api-java-client](https://github.com/codepine/testrail-api-java-client)
@@ -86,6 +86,10 @@ or activity.
 
 ```
 MobileAutomationFramework
+├── images
+│   ├── framework_stack.png
+│   ├── IDE.png
+│   └── logo.png
 ├── src
 │   ├── main
 │   │   ├── java
@@ -94,19 +98,21 @@ MobileAutomationFramework
 │   │   │   │   │   ├── BasePage.java
 │   │   │   │   │   └── BaseTest.java
 │   │   │   │   └── platform
-│   │   │   │       └── AndroidBaseTest.java
+│   │   │   │       ├── AndroidBaseTest.java
+│   │   │   │       └── IOSBaseTest.java
 │   │   │   └── utils
-│   │   │       ├── PropertyReader.java
-│   │   │       ├── RetryAnalyzer.java
 │   │   │       ├── listeners
 │   │   │       │   ├── AnnotationTransformer.java
 │   │   │       │   ├── EventListener.java
+│   │   │       │   ├── ExecutionListener.java
 │   │   │       │   └── TestListener.java
 │   │   │       ├── slack
 │   │   │       │   └── SlackUtil.java
-│   │   │       └── testrail
-│   │   │           ├── TestRailID.java
-│   │   │           └── TestRailUtil.java
+│   │   │       ├── testrail
+│   │   │       │   ├── TestRailID.java
+│   │   │       │   └── TestRailUtil.java
+│   │   │       ├── PropertyReader.java
+│   │   │       └── RetryAnalyzer.java
 │   │   └── resources
 │   │       ├── android.properties
 │   │       ├── ios.properties
@@ -116,25 +122,32 @@ MobileAutomationFramework
 │   └── test
 │       ├── java
 │       │   ├── pages
-│       │   │   ├── ForgotPasswordPage.java
 │       │   │   ├── HomePage.java
-│       │   │   ├── LoginPage.java
-│       │   │   ├── PrivacyPage.java
-│       │   │   └── ProfilePage.java
+│       │   │   ├── SignInPage.java
+│       │   │   └── ValidationPage.java
+│       │   ├── suites
+│       │   │   ├── android.xml
+│       │   │   └── ios.xml
 │       │   └── tests
 │       │       ├── android
 │       │       │   ├── HomeTests.java
-│       │       │   └── LoginTests.java
+│       │       │   ├── SignInTests.java
+│       │       │   └── ValidationTests.java
 │       │       └── ios
+│       │           ├── HomeTests.java
+│       │           ├── SignInTests.java
+│       │           └── ValidationTests.java
 │       └── resources
 │           ├── apps
+│           │   ├── demoApp.apk
+│           │   └── demoApp.yip
 │           └── suites
 │               └── testng.xml
+├── .gitignore
 ├── build.gradle
 ├── gradlew
 ├── gradlew.bat
 ├── readme.md
 └── settings.gradle
-
 ```
 ## :dvd: Demo

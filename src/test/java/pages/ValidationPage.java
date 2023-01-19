@@ -12,13 +12,13 @@ public class ValidationPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "\uD83D\uDCD6 Story Generator")
     private WebElement labelStoryGenerator;
     @AndroidFindBy(xpath = "//android.widget.EditText[1]")
-    @iOSXCUITFindBy(accessibility = "Enter an adjective e.g. quick, beautiful, interesting")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[1]")
     private WebElement inputAdjective;
     @AndroidFindBy(xpath = "//android.widget.EditText[2]")
-    @iOSXCUITFindBy(accessibility = "Enter a noun")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[2]")
     private WebElement inputNoun;
     @AndroidFindBy(xpath = "//android.widget.CheckBox")
-    @iOSXCUITFindBy(accessibility = "I agree to the terms of service.")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch")
     private WebElement checkboxTermsOfService;
     @AndroidFindBy(accessibility = "Submit")
     @iOSXCUITFindBy(accessibility = "Submit")

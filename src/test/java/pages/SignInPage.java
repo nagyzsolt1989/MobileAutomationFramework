@@ -9,7 +9,7 @@ import framework.core.BasePage;
 public class SignInPage extends BasePage {
 
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='Email\nYour email address']")
-    @iOSXCUITFindBy(accessibility = "Email Your email address")
+    @iOSXCUITFindBy(accessibility = "Email\nYour email address")
     private WebElement inputUsername;
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='Password']")
     @iOSXCUITFindBy(accessibility = "Password")

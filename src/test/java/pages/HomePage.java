@@ -21,7 +21,7 @@ public class HomePage extends BasePage {
     @iOSXCUITFindBy(accessibility = "Form widgets")
     private WebElement buttonFormWidgets;
     @AndroidFindBy(accessibility = "Validation")
-    @iOSXCUITFindBy(accessibility = "Form widgets")
+    @iOSXCUITFindBy(accessibility = "Validation")
     private WebElement buttonValidation;
 
     public HomePage(WebDriver driver) {
