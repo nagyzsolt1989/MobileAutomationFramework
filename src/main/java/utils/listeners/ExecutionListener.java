@@ -4,6 +4,7 @@ import framework.core.BaseTest;
 import org.testng.IExecutionListener;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
+import utils.PropertyReader;
 import utils.slack.SlackUtil;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -16,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 import static utils.listeners.TestListener.getFailedTestsList;
 
 public class ExecutionListener implements IExecutionListener {
+
+    private PropertyReader slack = new PropertyReader("slack.properties");
 
     private static String duration;
     private static long startTime;
@@ -30,8 +33,9 @@ public class ExecutionListener implements IExecutionListener {
     @Override
     public void onExecutionFinish() {
         endTime = System.currentTimeMillis();
-        System.out.println(getTestSummary());
-        SlackUtil.sendSlackNotification(SlackUtil.webHook, getTestSummary());
+        if (Boolean.valueOf(slack.getProperty("slack.enabled"))) {
+            SlackUtil.sendSlackNotification(SlackUtil.webHook, getTestSummary());
+        }
     }
 
     @Override
@@ -48,6 +52,7 @@ public class ExecutionListener implements IExecutionListener {
         try {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
+
             total = Integer.parseInt(doc.getDocumentElement().getAttribute("total"));
             passed = Integer.parseInt(doc.getDocumentElement().getAttribute("passed"));
             failed = Integer.parseInt(doc.getDocumentElement().getAttribute("failed"));
