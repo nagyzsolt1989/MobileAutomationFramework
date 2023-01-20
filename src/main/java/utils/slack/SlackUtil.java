@@ -18,7 +18,7 @@ public class SlackUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(SlackUtil.class);
 
     private static PropertyReader config = new PropertyReader("slack.properties");
-    public static String webHook = config.getProperty("slack.webhook");
+    public static final String WEB_HOOK = config.getProperty("slack.webhook");
 
     public static void sendSlackNotification(String webHook, String message) {
 

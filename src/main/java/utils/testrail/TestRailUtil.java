@@ -14,11 +14,11 @@ public class TestRailUtil {
 
     private static PropertyReader config = new PropertyReader("testrail.properties");
 
-    public static int PROJECT_ID = Integer.parseInt(config.getProperty("testrail.project"));
-    public static String TESTRAIL_USERNAME = config.getProperty("testrail.username");
-    public static String TESTRAIL_PASSWORD = config.getProperty("testrail.password");
-    public static String TESTRAIL_URL = config.getProperty("testrail.url");
-    public static String TEST_RUN = config.getProperty("testrail.run");
+    public static final int PROJECT_ID = Integer.parseInt(config.getProperty("testrail.project"));
+    public static final String TESTRAIL_USERNAME = config.getProperty("testrail.username");
+    public static final String TESTRAIL_PASSWORD = config.getProperty("testrail.password");
+    public static final String TESTRAIL_URL = config.getProperty("testrail.url");
+    public static final String TEST_RUN = config.getProperty("testrail.run");
     public static int RUN_ID;
 
     public static final TestRail testRailClient = TestRail
@@ -35,12 +35,10 @@ public class TestRailUtil {
     }
 
     public static Run addTestRun() {
-        Run run = testRailClient
+        return testRailClient
                 .runs()
                 .add(PROJECT_ID, new Run().setName(TEST_RUN))
                 .execute();
-
-        return run;
     }
 
     public static List<Run> getRunsForProject(int projectId) {

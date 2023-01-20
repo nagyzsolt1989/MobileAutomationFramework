@@ -12,7 +12,7 @@
 
 [Overview](#scroll-overview)
 •
-[Framework Stack](#rice_scene-screenshot)
+[Framework Stack](#factory-framework-stack)
 •
 [Documentation](#blue_book-documentation)
 •
@@ -38,7 +38,7 @@ An end to end java mobile test framework utilizing the latest tech available in 
 
 ![Logo](images/framework_stack.png)
 
-## :blue_book: Documentation
+# :blue_book: Documentation
 
 ## :exclamation: Prerequisites
 

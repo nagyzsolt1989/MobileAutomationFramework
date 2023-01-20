@@ -20,12 +20,13 @@ import java.util.List;
 public class TestListener implements ITestListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestListener.class);
+    public static final String TESTRAIL_ENABLED = "testrail.enabled";
 
     private PropertyReader testrail = new PropertyReader("testrail.properties");
 
-    public static List<ITestNGMethod> passedTests = new ArrayList<ITestNGMethod>();
-    public static List<ITestNGMethod> failedTests = new ArrayList<ITestNGMethod>();
-    public static List<ITestNGMethod> skippedTests = new ArrayList<ITestNGMethod>();
+    public static List<ITestNGMethod> passedTests = new ArrayList<>();
+    public static List<ITestNGMethod> failedTests = new ArrayList<>();
+    public static List<ITestNGMethod> skippedTests = new ArrayList<>();
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -36,7 +37,7 @@ public class TestListener implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         passedTests.add(result.getMethod());
         LOGGER.info("Test case passed: {}", result.getName());
-        if (Boolean.valueOf(testrail.getProperty("testrail.enabled"))) {
+        if (Boolean.valueOf(testrail.getProperty(TESTRAIL_ENABLED))) {
             TestRailUtil.setTestResult(result, TestRailUtil.getTestRailIDFromMethod(result),
                     TestRailUtil.getTestRunID());
         }
@@ -48,7 +49,7 @@ public class TestListener implements ITestListener {
         LOGGER.info("Test case failed: {}", result.getName());
         Allure.attachment("Test failure!",
                 new ByteArrayInputStream(((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.BYTES)));
-        if (Boolean.valueOf(testrail.getProperty("testrail.enabled"))) {
+        if (Boolean.valueOf(testrail.getProperty(TESTRAIL_ENABLED))) {
             TestRailUtil.setTestResult(result, TestRailUtil.getTestRailIDFromMethod(result),
                     TestRailUtil.getTestRunID());
         }
@@ -58,7 +59,7 @@ public class TestListener implements ITestListener {
     public void onTestSkipped(ITestResult result) {
         skippedTests.add(result.getMethod());
         LOGGER.info("Test case skipped: {}", result.getName());
-        if (Boolean.valueOf(testrail.getProperty("testrail.enabled"))) {
+        if (Boolean.valueOf(testrail.getProperty(TESTRAIL_ENABLED))) {
             TestRailUtil.setTestResult(result, TestRailUtil.getTestRailIDFromMethod(result),
                     TestRailUtil.getTestRunID());
         }
@@ -79,14 +80,14 @@ public class TestListener implements ITestListener {
     }
 
     public static String getFailedTestsList() {
-        String listFailedTests = "";
+        StringBuilder builder = new StringBuilder();
         if (failedTests.size() > 0) {
             for (ITestNGMethod test : failedTests) {
-                listFailedTests = listFailedTests + "\\n\\u2022 " + test.getMethodName();
+                builder.append("\\n\\u2022 " + test.getMethodName());
             }
         } else {
-            listFailedTests = "\\n\\u2022 None";
+            builder.append("\\n\\u2022 None");
         }
-        return listFailedTests;
+        return builder.toString();
     }
 }
