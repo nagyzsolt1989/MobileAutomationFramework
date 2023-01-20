@@ -22,12 +22,12 @@
 ## :bookmark_tabs: Menu
 
 - [Overview](#scroll-overview)
-- [Framework Stack](#rice_scene-screenshot)
+- [Framework Stack](#factory-framework-stack)
 - [Documentation](#blue_book-documentation)
-    - [Prerequisites](#exclamation-requirements)
+    - [Prerequisites](#exclamation-prerequisites)
     - [Design Patterns](#rice_scene-design-patterns)
     - [Directory Tree](#open_file_folder-directory-tree)
-    - [Dependencies and libs](#heavy_check_mark-dependencies-and-libs)
+    - [Dependencies and libs](#floppy_disk-dependencies-and-libs)
 - [Demo](#dvd-demo)
 
 ## :scroll: Overview
