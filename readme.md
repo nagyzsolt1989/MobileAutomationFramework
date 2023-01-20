@@ -16,7 +16,7 @@
 •
 [Documentation](#blue_book-documentation)
 •
-[Directory Tree](#dvd-demo)
+[Demo](#dvd-demo)
 </div>
 
 ## :bookmark_tabs: Menu
@@ -25,9 +25,9 @@
 - [Framework Stack](#rice_scene-screenshot)
 - [Documentation](#blue_book-documentation)
     - [Prerequisites](#exclamation-requirements)
-    - [Design Patterns](#open_file_folder-folder-structure)
-    - [Folder Structure](#open_file_folder-folder-structure)
-    - [Dependencies](#heavy_check_mark-dependencies-and-libs)
+    - [Design Patterns](#rice_scene-design-patterns)
+    - [Directory Tree](#open_file_folder-directory-tree)
+    - [Dependencies and libs](#heavy_check_mark-dependencies-and-libs)
 - [Demo](#dvd-demo)
 
 ## :scroll: Overview
@@ -40,9 +40,6 @@ An end to end java mobile test framework utilizing the latest tech available in 
 
 ## :blue_book: Documentation
 
-- Enable 'Use default reporters' for TestNG xml on the Listeners tab of Run/Debug configurations
-
-  ![IDE](images/IDE.png)
 ## :exclamation: Prerequisites
 
 - Java 16 SDK or lower [(because of this issue)](https://github.com/appium/java-client/issues/1619)
@@ -71,6 +68,7 @@ or activity.
 - EventListener: A WebDriverListener for Appium related events
 - TestListener: An ITestListener listener for TestNG related events
 - AnnotationTransformer: For retrying failed test cases up to 3 times
+- ExecutionListener: Listener for test execution related events
 
 ## :floppy_disk: Dependencies and libs
 
@@ -80,7 +78,6 @@ or activity.
 - [Allure](https://docs.qameta.io/allure/)
 - [Log4j2](https://logging.apache.org/log4j/2.x/)
 - [codepine/testrail-api-java-client](https://github.com/codepine/testrail-api-java-client)
-- [Slack API Client]()
 
 ## :open_file_folder: Directory Tree
 
