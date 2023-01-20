@@ -2,16 +2,8 @@ package utils.listeners;
 
 import framework.core.BaseTest;
 import org.testng.IExecutionListener;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 import utils.PropertyReader;
 import utils.slack.SlackUtil;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static utils.listeners.TestListener.getFailedTestsList;
@@ -27,13 +19,12 @@ public class ExecutionListener implements IExecutionListener {
     private static int passed;
     private static int failed;
     private static int skipped;
-    private static int retries;
-    private static int ignored;
 
     @Override
     public void onExecutionFinish() {
         endTime = System.currentTimeMillis();
         if (Boolean.valueOf(slack.getProperty("slack.enabled"))) {
+            System.out.println(getTestSummary());
             SlackUtil.sendSlackNotification(SlackUtil.webHook, getTestSummary());
         }
     }
@@ -44,31 +35,14 @@ public class ExecutionListener implements IExecutionListener {
     }
 
     public static String getTestSummary() {
-        String path = System.getProperty("user.dir") + "/test-output/testng-results.xml";
+        passed = TestListener.passedTests.size();
+        failed = TestListener.failedTests.size();
+        skipped = TestListener.skippedTests.size();
+        total = passed + failed + skipped;
+        duration = getExecutionTime(endTime - startTime);
 
-        File fXmlFile = new File(path);
-
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        try {
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
-
-            total = Integer.parseInt(doc.getDocumentElement().getAttribute("total"));
-            passed = Integer.parseInt(doc.getDocumentElement().getAttribute("passed"));
-            failed = Integer.parseInt(doc.getDocumentElement().getAttribute("failed"));
-            skipped = Integer.parseInt(doc.getDocumentElement().getAttribute("skipped"));
-            ignored = Integer.parseInt(doc.getDocumentElement().getAttribute("ignored"));
-            retries = Integer.parseInt(doc.getDocumentElement().getAttribute("retried"));
-            duration = getExecutionTime(endTime - startTime);
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (SAXException e) {
-            throw new RuntimeException(e);
-        }
         return SlackUtil.composeMessage(BaseTest.mobilePlatform, BaseTest.deviceName, BaseTest.platformVersion,
-                passed, failed, skipped, total, ignored, retries, duration, getFailedTestsList());
+                passed, failed, skipped, total, duration, getFailedTestsList());
     }
 
     private static String getExecutionTime(long millisecond) {
@@ -77,7 +51,7 @@ public class ExecutionListener implements IExecutionListener {
         long sec = TimeUnit.MILLISECONDS.toSeconds(millisecond) -
                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisecond));
 
-        String time = min + ":" + sec;
+        String time = min + " minute(s) " + sec + " seconds";
         return time;
     }
 }

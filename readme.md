@@ -34,7 +34,7 @@
 
 An end to end java mobile test framework utilizing the latest tech available in January 2023.
 
-## :rice_scene: Framework Stack
+## :factory: Framework Stack
 
 ![Logo](images/framework_stack.png)
 
@@ -52,7 +52,7 @@ An end to end java mobile test framework utilizing the latest tech available in 
 - Android Emulator
 - iOS Simulator
 
-## :heavy_check_mark: Design Patterns
+## :rice_scene: Design Patterns
 
 [Page Object Model:](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/) A structure where every page of the 
 application is represented with a class that contains the elements for that page with the methods 
@@ -66,13 +66,13 @@ only the page object class should be updated. The advantages of POM:
 It uses a lazy load initElements() static method to initialize the elements only when they are used in an operation 
 or activity.
 
-## :heavy_check_mark: Listeners
+## :ear: Listeners
 
 - EventListener: A WebDriverListener for Appium related events
 - TestListener: An ITestListener listener for TestNG related events
 - AnnotationTransformer: For retrying failed test cases up to 3 times
 
-## :heavy_check_mark: Dependencies and libs
+## :floppy_disk: Dependencies and libs
 
 - [TestNG](https://testng.org/doc/documentation-main.html)
 - [Appium2](https://github.com/appium/appium)
@@ -138,11 +138,9 @@ MobileAutomationFramework
 │       │           ├── SignInTests.java
 │       │           └── ValidationTests.java
 │       └── resources
-│           ├── apps
-│           │   ├── demoApp.apk
-│           │   └── demoApp.yip
-│           └── suites
-│               └── testng.xml
+│           └── apps
+│               ├── demoApp.apk
+│               └── demoApp.zip
 ├── .gitignore
 ├── build.gradle
 ├── gradlew
@@ -151,3 +149,16 @@ MobileAutomationFramework
 └── settings.gradle
 ```
 ## :dvd: Demo
+
+- After the configuration is adjusted in the properties files, a test run can be initiated by running one of the testNG suites.
+
+![IDE](images/test_run.gif)
+
+- Allure report
+
+![IDE](images/allure_1.png)
+![IDE](images/allure_2.png)
+
+- Slack notification
+  
+![IDE](images/slack.png)

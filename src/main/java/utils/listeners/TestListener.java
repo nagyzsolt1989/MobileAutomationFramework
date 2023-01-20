@@ -16,7 +16,6 @@ import utils.testrail.TestRailUtil;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class TestListener implements ITestListener {
 
@@ -24,7 +23,9 @@ public class TestListener implements ITestListener {
 
     private PropertyReader testrail = new PropertyReader("testrail.properties");
 
-    private static List<ITestNGMethod> failedtests = new ArrayList<ITestNGMethod>();
+    public static List<ITestNGMethod> passedTests = new ArrayList<ITestNGMethod>();
+    public static List<ITestNGMethod> failedTests = new ArrayList<ITestNGMethod>();
+    public static List<ITestNGMethod> skippedTests = new ArrayList<ITestNGMethod>();
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -33,6 +34,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
+        passedTests.add(result.getMethod());
         LOGGER.info("Test case passed: {}", result.getName());
         if (Boolean.valueOf(testrail.getProperty("testrail.enabled"))) {
             TestRailUtil.setTestResult(result, TestRailUtil.getTestRailIDFromMethod(result),
@@ -42,7 +44,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        failedtests.add(result.getMethod());
+        failedTests.add(result.getMethod());
         LOGGER.info("Test case failed: {}", result.getName());
         Allure.attachment("Test failure!",
                 new ByteArrayInputStream(((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.BYTES)));
@@ -54,6 +56,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult result) {
+        skippedTests.add(result.getMethod());
         LOGGER.info("Test case skipped: {}", result.getName());
         if (Boolean.valueOf(testrail.getProperty("testrail.enabled"))) {
             TestRailUtil.setTestResult(result, TestRailUtil.getTestRailIDFromMethod(result),
@@ -73,23 +76,12 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
-        Set<ITestResult> failedTests = context.getFailedTests().getAllResults();
-        for (ITestResult temp : failedTests) {
-            ITestNGMethod method = temp.getMethod();
-            if (context.getFailedTests().getResults(method).size() > 1) {
-                failedTests.remove(temp);
-            } else {
-                if (context.getPassedTests().getResults(method).size() > 0) {
-                    failedTests.remove(temp);
-                }
-            }
-        }
     }
 
     public static String getFailedTestsList() {
         String listFailedTests = "";
-        if (failedtests.size() > 0) {
-            for (ITestNGMethod test : failedtests) {
+        if (failedTests.size() > 0) {
+            for (ITestNGMethod test : failedTests) {
                 listFailedTests = listFailedTests + "\\n\\u2022 " + test.getMethodName();
             }
         } else {

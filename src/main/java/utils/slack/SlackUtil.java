@@ -1,5 +1,6 @@
 package utils.slack;
 
+import framework.core.BaseTest;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.entity.StringEntity;
 import org.slf4j.Logger;
@@ -43,7 +44,7 @@ public class SlackUtil {
 
 
     public static String composeMessage(String platform, String device, String os, int passed, int failed, int skipped,
-                                        int total, int ignored, int retries, String duration, String failedTests) {
+                                        int total, String duration, String failedTests) {
         return new String(
                 "{" +
                         "  \"blocks\": [" +
@@ -70,7 +71,7 @@ public class SlackUtil {
                         "        }," +
                         "        {" +
                         "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Operating System:*\\n " + os + "\"" +
+                        "          \"text\": \"*Operating System:*\\n " + BaseTest.mobilePlatform + " " + os + "\"" +
                         "        }," +
                         "        {" +
                         "          \"type\": \"mrkdwn\"," +
@@ -86,11 +87,11 @@ public class SlackUtil {
                         "      \"fields\": [" +
                         "        {" +
                         "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Branch:*\\n Master\"" +
+                        "          \"text\": \"*Branch:*\\n <google.com|Master>\"" +
                         "        }," +
                         "        {" +
                         "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Commit:*\\n Fix some things\"" +
+                        "          \"text\": \"*Commit:*\\n <google.com|Add Slack integration>\"" +
                         "        }" +
                         "      ]" +
                         "    }," +
@@ -111,32 +112,16 @@ public class SlackUtil {
                         "    }," +
                         "    {" +
                         "      \"type\": \"section\"," +
-                        "      \"fields\": [" +
-                        "        {" +
+                        "      \"text\": {" +
                         "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Passed:* " + passed + "\"" +
+                        "          \"text\": \"*\\u2022 Passed:* " + passed + "\\n*\\u2022 Failed:* " + failed +
+                        "\\n*\\u2022 Skipped:* " + skipped + "\\n\\n*\\u2022 Total:* " + total + "\"" +
                         "        }," +
-                        "        {" +
-                        "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Total:* " + total + "\"" +
+                        "      \"accessory\": {" +
+                        "          \"type\": \"image\"," +
+                        "          \"image_url\": \"https://files.slack.com/files-pri/T04KPGE914Y-F04KTER7W3V/ios.png\"," +
+                        "          \"alt_text\": \"platform_icon\"," +
                         "        }," +
-                        "        {" +
-                        "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Failed:* " + failed + "\"" +
-                        "        }," +
-                        "        {" +
-                        "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Ignored:* " + ignored + "\"" +
-                        "        }," +
-                        "        {" +
-                        "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Skipped:* " + skipped + "\"" +
-                        "        }," +
-                        "        {" +
-                        "          \"type\": \"mrkdwn\"," +
-                        "          \"text\": \"*Retries:* " + retries + "\"" +
-                        "        }," +
-                        "      ]" +
                         "    }," +
                         "    {" +
                         "      \"type\": \"divider\"" +
@@ -147,7 +132,23 @@ public class SlackUtil {
                         "        \"type\": \"mrkdwn\"," +
                         "        \"text\": \"*Failed test cases:*\\n" + failedTests + "\"" +
                         "      }" +
-                        "    }" +
+                        "    }," +
+                        "    {" +
+                        "      \"type\": \"divider\"" +
+                        "    }," +
+                        "    {" +
+                        "      \"type\": \"section\"," +
+                        "      \"fields\": [" +
+                        "        {" +
+                        "          \"type\": \"mrkdwn\"," +
+                        "          \"text\": \"*Pipeline:*\\n <google.com|#10356>\"" +
+                        "        }," +
+                        "        {" +
+                        "          \"type\": \"mrkdwn\"," +
+                        "          \"text\": \"*Allure:*\\n <google.com|Test Report>\"" +
+                        "        }" +
+                        "      ]" +
+                        "    }," +
                         "  ]" +
                         "}");
     }
