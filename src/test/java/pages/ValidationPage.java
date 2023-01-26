@@ -35,8 +35,8 @@ public class ValidationPage extends BasePage {
     @AndroidFindBy(accessibility = "Your story")
     @iOSXCUITFindBy(accessibility = "Your story")
     private WebElement labelYourStory;
-    @AndroidFindBy(accessibility = "The black developer saw a cat")
-    @iOSXCUITFindBy(accessibility = "The black developer saw a cat")
+    @AndroidFindBy(accessibility = "The new developer saw a cat")
+    @iOSXCUITFindBy(accessibility = "The new developer saw a cat")
     private WebElement textStory;
     @AndroidFindBy(accessibility = "Done")
     @iOSXCUITFindBy(accessibility = "Done")

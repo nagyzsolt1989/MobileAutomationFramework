@@ -69,7 +69,7 @@ public class ValidationTests extends AndroidBaseTest {
         HomePage homePage = new HomePage(driver);
 
         homePage.clickOnValidationButton();
-        validationPage.fillAdjectiveField("black");
+        validationPage.fillAdjectiveField("new");
         validationPage.fillNounField("cat");
         validationPage.acceptTermsOfService();
         validationPage.clickOnSubmitButton();
