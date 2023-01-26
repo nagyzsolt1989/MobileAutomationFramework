@@ -4,11 +4,13 @@
 
 # Java Mobile Automation Framework
 
-[//]: # (![Badge]&#40;https://img.shields.io/badge/badge-badge-brightgreen&#41;)
+![Badge](https://img.shields.io/badge/Selenium-4.7.1-brightgreen)  
+![Badge](https://img.shields.io/badge/Appium-8.3.0-brightgreen)  
+![Badge](https://img.shields.io/badge/Gradle-7.6-brightgreen)  
+![Badge](https://img.shields.io/badge/TestNG-7.4.0-brightgreen)  
+![Badge](https://img.shields.io/badge/Log4j2-2.19.0-brightgreen)  
+![Badge](https://img.shields.io/badge/Allure-2.11.2-brightgreen)  
 
-[//]: # (![Badge]&#40;https://img.shields.io/badge/badge-badge-brightgreen&#41;)
-
-[//]: # (![Badge]&#40;https://img.shields.io/badge/badge-badge-brightgreen&#41;)
 
 [Overview](#scroll-overview)
 •
@@ -22,21 +24,33 @@
 ## :bookmark_tabs: Menu
 
 - [Overview](#scroll-overview)
-- [Framework Stack](#factory-framework-stack)
+  - [Framework Stack](#factory-framework-stack)
+  - [Features](#books-features)
 - [Documentation](#blue_book-documentation)
-    - [Prerequisites](#exclamation-prerequisites)
-    - [Design Patterns](#rice_scene-design-patterns)
-    - [Directory Tree](#open_file_folder-directory-tree)
-    - [Dependencies and libs](#floppy_disk-dependencies-and-libs)
+  - [Prerequisites](#exclamation-prerequisites)
+  - [Design Patterns](#rice_scene-design-patterns)
+  - [Directory Tree](#open_file_folder-directory-tree)
+  - [Dependencies and libs](#floppy_disk-dependencies-and-libs)
 - [Demo](#dvd-demo)
 
-## :scroll: Overview
+# :scroll: Overview
 
-An end to end java mobile test framework utilizing the latest tech available in January 2023.
+A java mobile test framework for Android and iOS utilizing Appium, Selenium, TestNG, Gradle and the latest tech available in January 2023.
 
 ## :factory: Framework Stack
 
 ![Logo](images/framework_stack.png)
+
+## :books: Features
+
+- Utilizing Page Object Model and Page Factory design patterns
+- Integrated Allure reporting 
+- Attach screenshots to Allure before every click or input field change
+- Attach a screenshot to Allure on test failure
+- Capability to post the test results to Slack
+- Capability to post the test results to TestRail
+- Capability to retry failed cases up to 3 times
+- Customizable console logger
 
 # :blue_book: Documentation
 
@@ -147,7 +161,7 @@ MobileAutomationFramework
 ```
 ## :dvd: Demo
 
-- After the configuration is adjusted in the properties files, a test run can be initiated by running one of the testNG suites.
+- After the configuration is adjusted in the properties files, a test run can be initiated by running one of the TestNG xml suites.
 
 ![IDE](images/test_run.gif)
 
