@@ -8,7 +8,6 @@
 ![Badge](https://img.shields.io/badge/Appium-8.3.0-brightgreen)  
 ![Badge](https://img.shields.io/badge/Gradle-7.6-brightgreen)  
 ![Badge](https://img.shields.io/badge/TestNG-7.4.0-brightgreen)  
-![Badge](https://img.shields.io/badge/Log4j2-2.19.0-brightgreen)  
 ![Badge](https://img.shields.io/badge/Allure-2.11.2-brightgreen)  
 
 
